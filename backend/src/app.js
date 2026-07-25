@@ -18,8 +18,16 @@ const server = createServer(app);
 const io = connectToSocket(server);
 
 
-app.set("port", (process.env.PORT || 8000))
-app.use(cors());
+app.set("port", (process.env.PORT || 8000));
+
+app.use(cors({
+    origin: "https://your-meetora-frontend.vercel.app", // Put your EXACT Vercel URL here
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true // This is required if you are using cookies/sessions for login
+}));
+
+
+
 app.use(express.json({ limit: "40kb" }));
 app.use(express.urlencoded({ limit: "40kb", extended: true }));
 
