@@ -21,9 +21,9 @@ const io = connectToSocket(server);
 app.set("port", (process.env.PORT || 8000));
 
 app.use(cors({
-    origin: "https://your-meetora-frontend.vercel.app", // Put your EXACT Vercel URL here
+    origin: "https://meetorafrontend.onrender.com", // Updated to your actual frontend link
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true // This is required if you are using cookies/sessions for login
+    credentials: true 
 }));
 
 

@@ -7,8 +7,8 @@ let timeOnline = {}
 
 export const connectToSocket = (server) => {
     const io = new Server(server, {
-        cors: {
-            origin: "*",
+       cors: {
+            origin: "https://meetorafrontend.onrender.com", // Updated to your actual frontend URL
             methods: ["GET", "POST"],
             allowedHeaders: ["*"],
             credentials: true
