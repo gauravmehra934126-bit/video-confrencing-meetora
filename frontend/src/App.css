@@ -1,449 +1,259 @@
 /* ==========================
    Landing Page
 ========================== */
-
 .landingPageContainer {
-
   width: 100%;
   min-height: 100vh;
-
   background: url("/public/background.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-
   color: white;
-
   overflow: hidden;
-
 }
-
-
 
 /* ==========================
    Navbar
 ========================== */
-
 .landingPageContainer nav {
-
   padding: 1.5rem 4rem;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  position: relative; /* Added for mobile menu positioning */
 }
-
-
 
 .landingPageContainer nav h2 {
-
   font-size: 2rem;
   font-weight: 700;
-
 }
-
-
 
 /* Meetora Highlight */
-
 .brand {
-
   font-weight: 800;
-
   letter-spacing: 1px;
-
-  background: linear-gradient(
-    90deg,
-    #ffffff,
-    #4da3ff,
-    #1a73e8
-  );
-
+  background: linear-gradient(90deg, #ffffff, #4da3ff, #1a73e8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  text-shadow:
-  0 0 15px rgba(77,163,255,0.5);
-
+  text-shadow: 0 0 15px rgba(77,163,255,0.5);
 }
 
-
+/* Hamburger Icon (Hidden on Desktop) */
+.hamburger {
+  display: none;
+  font-size: 2.2rem;
+  cursor: pointer;
+  z-index: 100;
+  user-select: none;
+  color: white;
+}
 
 .landingPageContainer nav .navlist {
-
   display: flex;
-
   gap: 2rem;
-
   cursor: pointer;
-
+  align-items: center; 
 }
-
-
 
 .navlist p {
-
   font-size: 1.1rem;
-
   transition: 0.3s ease;
-
 }
-
-
 
 .navlist p:hover {
-
   color: #4da3ff;
-
   transform: translateY(-3px);
-
 }
-
-
 
 /* ==========================
    Main Landing Section
 ========================== */
-
-
 .landingMainContainer {
-
   height: 80vh;
-
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
   padding: 0 5rem;
-
   gap: 3rem;
-
 }
-
-
-
-/* Left Content */
-
 
 .landingMainContainer > div:first-child {
-
   width: 50%;
-
 }
-
-
 
 .landingMainContainer > div:first-child h1 {
-
   font-size: 3.5rem;
-
   line-height: 1.2;
-
   font-weight: 700;
-
 }
-
-
 
 .highlight {
-
   color: #4da3ff;
-
 }
-
-
 
 .landingMainContainer > div:first-child p {
-
   margin-top: 1rem;
-
   font-size: 1.3rem;
-
   color: #eeeeee;
-
 }
-
-
 
 /* ==========================
    Button
 ========================== */
-
-
 .landingMainContainer > div:first-child div[role="button"] {
-
-  background: linear-gradient(
-    135deg,
-    #1a73e8,
-    #4da3ff
-  );
-
+  background: linear-gradient(135deg, #1a73e8, #4da3ff);
   width: fit-content;
-
   padding: 1rem 2rem;
-
   margin-top: 2rem;
-
   border-radius: 30px;
-
   cursor: pointer;
-
-  box-shadow:
-  0 8px 25px rgba(26,115,232,0.5);
-
+  box-shadow: 0 8px 25px rgba(26,115,232,0.5);
   transition: 0.3s ease;
-
 }
-
-
 
 .landingMainContainer > div:first-child div[role="button"]:hover {
-
   transform: translateY(-5px);
-
-  box-shadow:
-  0 15px 35px rgba(26,115,232,0.8);
-
+  box-shadow: 0 15px 35px rgba(26,115,232,0.8);
 }
-
-
 
 .landingMainContainer > div:first-child div[role="button"] a {
-
   text-decoration: none;
-
   color: white;
-
   font-size: 1.4rem;
-
   font-weight: 600;
-
 }
-
-
 
 /* ==========================
    Image
 ========================== */
-
-
 .landingMainContainer > div:nth-child(2) {
-
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
 }
-
-
 
 .landingMainContainer > div:nth-child(2) img {
-
   height: 70vh;
-
   max-width: 45vw;
-
   object-fit: contain;
-
 }
 
-
-
 /* ==========================
-   Mobile Responsive
+   Mobile Responsive (900px)
 ========================== */
-
-
 @media(max-width:900px){
-
-
   .landingPageContainer nav {
-
     padding: 1.5rem 2rem;
-
   }
-
-
 
   .landingPageContainer nav h2 {
-
     font-size: 1.7rem;
-
   }
 
+  /* Show the hamburger icon */
+  .hamburger {
+    display: block;
+  }
 
-
+  /* Transform the navlist into a dropdown menu */
   .navlist {
-
-    display: none;
-
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 12px;
+    gap: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Hide by default, smooth transition when opening */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 99;
   }
 
-
+  /* Show the dropdown when the 'active' class is applied */
+  .navlist.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 
   .landingMainContainer {
-
     height: auto;
-
     flex-direction: column;
-
     justify-content: center;
-
     text-align: center;
-
     padding: 3rem 2rem;
-
     gap: 3rem;
-
   }
-
-
 
   .landingMainContainer > div:first-child {
-
     width: 100%;
-
   }
-
-
 
   .landingMainContainer > div:first-child h1 {
-
     font-size: 2.8rem;
-
   }
-
-
 
   .landingMainContainer > div:first-child div[role="button"] {
-
     margin-left: auto;
-
     margin-right: auto;
-
   }
-
-
 
   .landingMainContainer > div:nth-child(2) img {
-
     height: 45vh;
-
     max-width: 80vw;
-
   }
-
-
 }
-
-
 
 /* ==========================
-   Mobile Image Animation Only
+   Mobile Image Animation Only (600px)
 ========================== */
-
-
 @media(max-width:600px){
-
-
   .landingMainContainer > div:nth-child(2) img {
-
     animation: mobileFloat 3s ease-in-out infinite;
-
   }
-
-
 
   .landingPageContainer nav {
-
     padding: 1rem 1.5rem;
-
   }
-
-
 
   .landingPageContainer nav h2 {
-
     font-size: 1.5rem;
-
   }
-
-
 
   .landingMainContainer {
-
     padding: 2rem 1.5rem;
-
   }
-
-
 
   .landingMainContainer > div:first-child h1 {
-
     font-size: 2rem;
-
   }
-
-
 
   .landingMainContainer > div:first-child p {
-
     font-size: 1rem;
-
   }
-
-
 
   .landingMainContainer > div:first-child div[role="button"] {
-
     padding: 0.8rem 1.6rem;
-
   }
-
-
 
   .landingMainContainer > div:first-child div[role="button"] a {
-
     font-size: 1rem;
-
   }
-
-
 }
-
-
 
 @keyframes mobileFloat {
-
-
-  0% {
-
-    transform: translateY(0px);
-
-  }
-
-
-  50% {
-
-    transform: translateY(-15px);
-
-  }
-
-
-  100% {
-
-    transform: translateY(0px);
-
-  }
-
-
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
 }
-
 
 
 
