@@ -64,11 +64,10 @@ export default function VideoMeetComponent() {
 
     // }
 
-    useEffect(() => {
-        console.log("HELLO")
-        getPermissions();
-
-    })
+     useEffect(() => {
+    console.log("HELLO");
+    getPermissions();
+    }, []);
 
     let getDislayMedia = () => {
         if (screen) {
@@ -120,16 +119,14 @@ export default function VideoMeetComponent() {
             console.log(error);
         }
     };
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
-        if (video !== undefined && audio !== undefined) {
-            getUserMedia();
-            console.log("SET STATE HAS ", video, audio);
-
-        }
-
-
-    }, [video, audio])
+    if (video !== undefined && audio !== undefined) {
+        getUserMedia();
+        console.log("SET STATE HAS ", video, audio);
+       }
+    }, [video, audio]);
+     
     let getMedia = () => {
         setVideo(videoAvailable);
         setAudio(audioAvailable);
